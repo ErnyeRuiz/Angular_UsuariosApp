@@ -1,0 +1,86 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2"> 
+        <div class="card">      
+          <div class="card-body">
+            <h3 class="titulo">Usuarios</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="titulo">Agregar usuario</h5>
+            <form [formGroup] = "form" (ngSubmit)="agregarUsuario()">        
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-user"
+                                [class.greenIcon]="this.form.get('nombre')?.valid"
+                                [class.redIcon]="this.form.get('nombre')?.invalid && this.form.get('nombre')?.touched"
+                                ></i>
+                            </span>
+                            <input formControlName="nombre" type="text" class="form-control" placeholder="nombre" aria-label="nombre" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-user"
+                                [class.greenIcon]="this.form.get('apellidos')?.valid"
+                                [class.redIcon]="this.form.get('apellidos')?.invalid &&this.form.get('apellidos')?.touched"
+                                ></i>
+                            </span>
+                            <input formControlName="apellidos" type="text" class="form-control" placeholder="apellidos" aria-label="apellidos" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                </div>                                                                                                                                  
+                <div class="col-lg-12">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">
+                            <i class="fa-regular fa-envelope"
+                            [class.greenIcon]="this.form.get('correo')?.valid"
+                            [class.redIcon]="this.form.get('correo')?.invalid && this.form.get('correo')?.touched"
+                            ></i>                        </span>
+                        <input formControlName="correo" type="email" class="form-control" placeholder="correo" aria-label="correo" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
+                        <i class="fa-solid fa-database"></i> 
+                        Agregar
+                    </button>
+                </div>                
+            </form>  
+          </div>
+        </div>          
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5>Lista de usuarios</h5>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>ID</td>
+                  <td>Nombre</td>
+                  <td>Apellidos</td>
+                  <td>Correo</td>
+                </tr> 
+                <tr *ngFor="let user of listaUsuarios">
+                  <td>{{user.idUser}}</td>
+                  <td>{{user.userName}}</td>
+                  <td>{{user.lastName}}</td>
+                  <td>{{user.email}}</td>  
+                </tr>              
+              </tbody>
+            </table>
+          </div>
+        </div>      
+      </div>
+    </div>
+  </div>
+
